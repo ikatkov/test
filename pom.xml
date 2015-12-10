@@ -16,6 +16,7 @@
         <maven-surefire-report-plugin.version>2.17</maven-surefire-report-plugin.version>
         <maven-clover2-plugin.version>4.0.0</maven-clover2-plugin.version>
         <buildtype>test</buildtype>
+        <wagon-ssh-external.version>1.0-beta-6</wagon-ssh-external.version>
     </properties>
 
     <modules>
@@ -69,7 +70,44 @@
             </plugins>
         </pluginManagement>
 
+        <!--can't put them into profile :-(-->
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh-external</artifactId>
+                <version>${wagon-ssh-external.version}</version>
+            </extension>
+        </extensions>
+
     </build>
+
+    <scm>
+        <developerConnection>scm:git:ssh://git@git.corp.yahoo.com/katkovi/test.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>artifactory.ops.yahoo.com-releases</id>
+            <name>artifactory.ops.yahoo.com-releases</name>
+            <url>scpexe://artifactory-ssh-proxy.corp.yahoo.com:4443/maven-local-release/</url>
+        </repository>
+    </distributionManagement>
+
+
+    <repositories>
+        <repository>
+            <id>yahoo</id>
+            <name>YMaven Corporate Repository</name>
+            <url>http://ymaven.corp.yahoo.com:9999/proximity/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <profiles>
         <profile>
@@ -113,7 +151,14 @@
                             <licenseLocation>/home/y/conf/clover/clover.license</licenseLocation>
                         </configuration>
                     </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.4.2</version>
+                    </plugin>
                 </plugins>
+
+
             </build>
             <reporting>
                 <plugins>
