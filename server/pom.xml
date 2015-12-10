@@ -6,19 +6,24 @@
     <parent>
         <groupId>com.yahoo.omid</groupId>
         <artifactId>omid-test</artifactId>
-        <version>3.0.0</version>
+        <version>3.0.1</version>
     </parent>
 
     <artifactId>omid-test-server</artifactId>
     <packaging>jar</packaging>
     <name>Omid Test Server</name>
-    
+
 
     <dependencies>
         <dependency>
             <groupId>com.yahoo.omid</groupId>
             <artifactId>omid-test-client</artifactId>
-            <version>3.0.0</version>
+            <version>3.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
         </dependency>
     </dependencies>
 
