@@ -2,22 +2,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
+
+    <parent>
+        <groupId>com.yahoo.omid</groupId>
+        <artifactId>omid-test</artifactId>
+        <version>3.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>omid-test-client</artifactId>
+    <packaging>jar</packaging>
+    <name>Omid Test Client</name>
+
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
         </dependency>
     </dependencies>
-
-    <parent>
-        <groupId>com.yahoo.omid</groupId>
-        <artifactId>omid-test</artifactId>
-        <version>3.0.1</version>
-    </parent>
-
-    <artifactId>omid-test-client</artifactId>
-    <packaging>jar</packaging>
-    <name>Omid Test Client</name>
 
     <build>
         <plugins>

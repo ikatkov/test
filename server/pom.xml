@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.yahoo.omid</groupId>
         <artifactId>omid-test</artifactId>
-        <version>3.0.1</version>
+        <version>3.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>omid-test-server</artifactId>
@@ -18,7 +18,7 @@
         <dependency>
             <groupId>com.yahoo.omid</groupId>
             <artifactId>omid-test-client</artifactId>
-            <version>3.0.1</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
