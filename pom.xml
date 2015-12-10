@@ -1,0 +1,125 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.yahoo.omid</groupId>
+    <artifactId>omid-test</artifactId>
+    <packaging>pom</packaging>
+    <version>3.0.0</version>
+    <name>Omid</name>
+
+    <properties>
+        <maven.deploy.skip>true</maven.deploy.skip>
+        <target_jdk_version>1.8</target_jdk_version>
+        <maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
+        <maven-surefire-report-plugin.version>2.17</maven-surefire-report-plugin.version>
+        <maven-clover2-plugin.version>4.0.0</maven-clover2-plugin.version>
+        <buildtype>test</buildtype>
+    </properties>
+
+    <modules>
+        <module>server</module>
+        <module>client</module>
+    </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-report-plugin</artifactId>
+                    <version>${maven-surefire-report-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
+                    <configuration>
+                        <source>${target_jdk_version}</source>
+                        <target>${target_jdk_version}</target>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>2.2.1</version>
+                    <configuration>
+                        <skipAssembly>true</skipAssembly>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+    </build>
+
+    <profiles>
+        <profile>
+            <id>screwdriver-v3</id>
+            <activation>
+                <property>
+                    <name>screwdriver3</name>
+                </property>
+            </activation>
+            <properties>
+                <buildtype>release</buildtype>
+                <project.reporting.outputDirectory>${env.TEST_RESULTS_DIR}</project.reporting.outputDirectory>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.atlassian.maven.plugins</groupId>
+                        <artifactId>maven-clover2-plugin</artifactId>
+                        <version>${maven-clover2-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>clover</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>instrument-test</goal>
+                                    <goal>clover</goal>
+                                </goals>
+                                <configuration>
+                                    <targetPercentage>1%</targetPercentage>
+                                    <generateHtml>true</generateHtml>
+                                    <generateXml>true</generateXml>
+                                    <jdk>${target_jdk_version}</jdk>
+                                    <includesAllSourceRoots>false</includesAllSourceRoots>
+                                    <licenseLocation>/home/y/conf/clover/clover.license</licenseLocation>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <includesAllSourceRoots>false</includesAllSourceRoots>
+                            <jdk>${target_jdk_version}</jdk>
+                            <licenseLocation>/home/y/conf/clover/clover.license</licenseLocation>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <reporting>
+                <plugins>
+                    <plugin>
+                        <groupId>com.atlassian.maven.plugins</groupId>
+                        <artifactId>maven-clover2-plugin</artifactId>
+                        <version>${maven-clover2-plugin.version}</version>
+                        <configuration>
+                            <jdk>${target_jdk_version}</jdk>
+                            <licenseLocation>/home/y/conf/clover/clover.license</licenseLocation>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </reporting>
+        </profile>
+
+
+    </profiles>
+
+</project>
