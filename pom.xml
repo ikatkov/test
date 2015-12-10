@@ -169,6 +169,7 @@
                         <configuration>
                             <jdk>${target_jdk_version}</jdk>
                             <licenseLocation>/home/y/conf/clover/clover.license</licenseLocation>
+                            <outputDirectory>${env.COVERAGE_DIR}</outputDirectory>
                         </configuration>
                     </plugin>
                 </plugins>
