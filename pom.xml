@@ -73,7 +73,7 @@
                             <id>clover</id>
                             <phase>prepare-package</phase>
                             <goals>
-                                <goal>instrument-test</goal>
+                                <goal>setup</goal>
                                 <goal>aggregate</goal>
                                 <goal>clover</goal>
                             </goals>
