@@ -5,7 +5,7 @@
     <groupId>com.yahoo.omid</groupId>
     <artifactId>omid-test</artifactId>
     <packaging>pom</packaging>
-    <version>3.0.14-SNAPSHOT</version>
+    <version>3.0.14</version>
     <name>Omid</name>
 
     <properties>
