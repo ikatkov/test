@@ -12,6 +12,7 @@
         <target_jdk_version>1.8</target_jdk_version>
         <maven-surefire-plugin.version>2.19</maven-surefire-plugin.version>
         <maven-surefire-report-plugin.version>2.19</maven-surefire-report-plugin.version>
+        <maven-clover2-plugin.version>4.0.0</maven-clover2-plugin.version>
         <buildtype>test</buildtype>
         <wagon-ssh-external.version>1.0-beta-6</wagon-ssh-external.version>
     </properties>
@@ -55,26 +56,54 @@
                         <target>${target_jdk_version}</target>
                     </configuration>
                 </plugin>
-
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
                     <version>2.4.1</version>
                     <configuration>
                         <skipAssembly>true</skipAssembly>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>com.atlassian.maven.plugins</groupId>
+                    <artifactId>maven-clover2-plugin</artifactId>
+                    <version>${maven-clover2-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>clover</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>instrument-test</goal>
+                                <goal>aggregate</goal>
+                                <goal>clover</goal>
+                            </goals>
+                            <configuration>
+                                <targetPercentage>1%</targetPercentage>
+                                <generateHtml>true</generateHtml>
+                                <generateXml>true</generateXml>
+                                <jdk>${target_jdk_version}</jdk>
+                                <includesAllSourceRoots>false</includesAllSourceRoots>
+                                <licenseLocation>/home/y/conf/clover/clover.license</licenseLocation>
+                                <singleCloverDatabase>true</singleCloverDatabase>
+                            </configuration>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <includesAllSourceRoots>false</includesAllSourceRoots>
+                        <jdk>${target_jdk_version}</jdk>
+                        <licenseLocation>/home/y/conf/clover/clover.license</licenseLocation>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
 
-        <!--can't put them into profile :-(-->
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ssh-external</artifactId>
-                <version>${wagon-ssh-external.version}</version>
-            </extension>
-        </extensions>
+        <!--can't put them into profile, has to be in the main pom :-(-->
+            <extensions>
+                <extension>
+                    <groupId>org.apache.maven.wagon</groupId>
+                    <artifactId>wagon-ssh-external</artifactId>
+                    <version>${wagon-ssh-external.version}</version>
+                </extension>
+            </extensions>
 
     </build>
 
@@ -143,6 +172,7 @@
             </activation>
             <properties>
                 <buildtype>release</buildtype>
+                <project.reporting.outputDirectory>${env.TEST_RESULTS_DIR}</project.reporting.outputDirectory>
             </properties>
             <build>
                 <plugins>
