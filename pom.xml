@@ -9,7 +9,6 @@
     <name>Omid</name>
 
     <properties>
-        <maven.deploy.skip>true</maven.deploy.skip>
         <target_jdk_version>1.8</target_jdk_version>
         <maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
         <maven-surefire-report-plugin.version>2.17</maven-surefire-report-plugin.version>
