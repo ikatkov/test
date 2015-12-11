@@ -83,7 +83,6 @@
                                 <jdk>${target_jdk_version}</jdk>
                                 <includesAllSourceRoots>false</includesAllSourceRoots>
                                 <licenseLocation>/home/y/conf/clover/clover.license</licenseLocation>
-                                <singleCloverDatabase>true</singleCloverDatabase>
                             </configuration>
                         </execution>
                     </executions>
