@@ -71,7 +71,7 @@
                     <executions>
                         <execution>
                             <id>clover</id>
-                            <phase>prepare-package</phase>
+                            <phase>test</phase>
                             <goals>
                                 <goal>setup</goal>
                                 <goal>aggregate</goal>
