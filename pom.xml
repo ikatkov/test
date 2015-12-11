@@ -5,7 +5,7 @@
     <groupId>com.yahoo.omid</groupId>
     <artifactId>omid-test</artifactId>
     <packaging>pom</packaging>
-    <version>3.0.10-SNAPSHOT</version>
+    <version>3.0.10</version>
     <name>Omid</name>
 
     <properties>
@@ -80,7 +80,7 @@
 
     <scm>
         <developerConnection>scm:git:ssh://git@git.corp.yahoo.com/katkovi/test.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>omid-test-3.0.10</tag>
     </scm>
 
     <distributionManagement>
