@@ -5,7 +5,7 @@ before_script:
   - umask 022
 
 after_success:
-  - mvn jacoco:merge jacoco:report coveralls:report
+  - mvn coveralls:report
 
 after_failure:
   - cat client/target/surefire-reports/*.txt
