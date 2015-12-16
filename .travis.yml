@@ -7,11 +7,8 @@ before_script:
   # This is required to avoid failures of HBase minicluster related to Hadoop 1.x releases
   - umask 022
 
-#deploy:
-#  - mvn -DskipTests deploy
-#
-#after_script:
-#  - coveralls:report
+after_success:
+  - mvn coveralls:report
 
 after_failure:
   - cat client/target/surefire-reports/*.txt
