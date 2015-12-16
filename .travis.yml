@@ -8,7 +8,7 @@ before_script:
   - umask 022
 
 after_success:
-  - mvn coveralls:report
+  - mvn cobertura:cobertura coveralls:report
   - mvn release:prepare release:perform deploy -DskipClean -DskipTests --settings sonatype-settings.xml
 
 after_failure:

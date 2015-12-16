@@ -110,14 +110,6 @@
                             <format>html</format>
                         </formats>
                     </configuration>
-                    <executions>
-                        <execution>
-                            <phase>test</phase>
-                            <goals>
-                                <goal>cobertura</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
 
                 <!-- Show Coverage reports in https://coveralls.io/ -->
