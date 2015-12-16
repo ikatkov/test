@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.yahoo.omid</groupId>
+        <groupId>com.katkov.omid</groupId>
         <artifactId>omid-test</artifactId>
         <version>3.0.28-SNAPSHOT</version>
     </parent>
@@ -15,7 +15,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.yahoo.omid</groupId>
+            <groupId>com.katkov.omid</groupId>
             <artifactId>omid-test-client</artifactId>
             <version>${project.version}</version>
         </dependency>

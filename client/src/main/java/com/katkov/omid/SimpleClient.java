@@ -1,4 +1,4 @@
-package com.yahoo.omid;
+package com.katkov.omid;
 
 /**
  * @author katkovi@

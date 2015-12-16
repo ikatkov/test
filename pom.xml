@@ -3,7 +3,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.yahoo.omid</groupId>
+    <groupId>com.katkov.omid</groupId>
     <artifactId>omid-test</artifactId>
     <packaging>pom</packaging>
     <version>3.0.28-SNAPSHOT</version>
@@ -79,6 +79,11 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
                     <version>${maven-release-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>deploy</phase>
+                        </execution>
+                    </executions>
                 </plugin>
 
                 <!-- ======================================================================================================== -->
@@ -122,15 +127,6 @@
                     <version>${coveralls.version}</version>
                 </plugin>
 
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <configuration>
-                        <checkModificationExcludes>
-                            <checkModificationExclude>pom.xml</checkModificationExclude>
-                        </checkModificationExcludes>
-                    </configuration>
-                </plugin>
             </plugins>
         </pluginManagement>
 
