@@ -14,7 +14,6 @@
         <maven-surefire-report-plugin.version>2.19</maven-surefire-report-plugin.version>
         <maven-clover2-plugin.version>4.0.0</maven-clover2-plugin.version>
         <buildtype>test</buildtype>
-        <wagon-ssh-external.version>1.0-beta-6</wagon-ssh-external.version>
     </properties>
 
     <modules>
@@ -36,11 +35,6 @@
     <build>
         <pluginManagement>
             <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>2.3.2</version>
-                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
@@ -68,39 +62,10 @@
                         <skipAssembly>true</skipAssembly>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>com.atlassian.maven.plugins</groupId>
-                    <artifactId>maven-clover2-plugin</artifactId>
-                    <version>${maven-clover2-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>clover</id>
-                            <phase>test</phase>
-                            <goals>
-                                <goal>setup</goal>
-                                <goal>aggregate</goal>
-                                <goal>clover</goal>
-                            </goals>
-                            <configuration>
-                                <generateHtml>true</generateHtml>
-                                <generateXml>true</generateXml>
-                                <jdk>${target_jdk_version}</jdk>
-                                <includesAllSourceRoots>false</includesAllSourceRoots>
-                                <licenseLocation>/home/y/conf/clover/clover.license</licenseLocation>
-                            </configuration>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <includesAllSourceRoots>false</includesAllSourceRoots>
-                        <jdk>${target_jdk_version}</jdk>
-                        <licenseLocation>/home/y/conf/clover/clover.license</licenseLocation>
-                    </configuration>
-                </plugin>
             </plugins>
         </pluginManagement>
 
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -114,20 +79,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>com.atlassian.maven.plugins</groupId>
-                <artifactId>maven-clover2-plugin</artifactId>
-            </plugin>
         </plugins>
-
-        <!--can't put them into profile, has to be in the main pom :-(-->
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ssh-external</artifactId>
-                <version>${wagon-ssh-external.version}</version>
-            </extension>
-        </extensions>
 
     </build>
 
@@ -136,91 +88,5 @@
         <tag>HEAD</tag>
     </scm>
 
-    <distributionManagement>
-        <repository>
-            <id>artifactory.ops.yahoo.com-releases</id>
-            <name>artifactory.ops.yahoo.com-releases</name>
-            <url>scpexe://artifactory-ssh-proxy.corp.yahoo.com:4443/maven-local-release/</url>
-        </repository>
-    </distributionManagement>
-
-
-    <repositories>
-        <repository>
-            <id>yahoo</id>
-            <name>YMaven Corporate Repository</name>
-            <url>http://ymaven.corp.yahoo.com:9999/proximity/repository/public</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
-    <profiles>
-        <profile>
-            <id>screwdriver-v3</id>
-            <activation>
-                <property>
-                    <name>screwdriver3</name>
-                </property>
-            </activation>
-            <properties>
-                <buildtype>release</buildtype>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <skipTests>true</skipTests>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-release-plugin</artifactId>
-                        <configuration>
-                            <checkModificationExcludes>
-                                <checkModificationExclude>pom.xml</checkModificationExclude>
-                            </checkModificationExcludes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>screwdriver-v3-with-tests</id>
-            <activation>
-                <property>
-                    <name>screwdriver-v3-with-tests</name>
-                </property>
-            </activation>
-            <properties>
-                <buildtype>release</buildtype>
-                <project.reporting.outputDirectory>${env.TEST_RESULTS_DIR}</project.reporting.outputDirectory>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <skip>false</skip>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>com.atlassian.maven.plugins</groupId>
-                        <artifactId>maven-clover2-plugin</artifactId>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-
-    </profiles>
 
 </project>
