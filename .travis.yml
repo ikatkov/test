@@ -9,7 +9,9 @@ before_script:
 
 after_success:
   - mvn coveralls:report
+  - mvn clean deploy --settings sonatype-settings.xml
 
 after_failure:
   - cat client/target/surefire-reports/*.txt
   - cat server/target/surefire-reports/*.txt
+
