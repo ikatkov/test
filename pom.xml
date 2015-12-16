@@ -170,7 +170,15 @@
 
     <profiles>
         <profile>
-            <id>deploy</id>
+            <id>deploy_profile</id>
+            <activation>
+                <property>
+                    <name>deploy_profile</name>
+                </property>
+            </activation>
+            <properties>
+                <buildtype>release</buildtype>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
