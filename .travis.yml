@@ -8,7 +8,7 @@ before_script:
   - umask 022
 
 after_success:
-  - mvn coveralls:report
+  - mvn coveralls:report maven-release-prepare maven-release-perform
 
 after_failure:
   - cat client/target/surefire-reports/*.txt
