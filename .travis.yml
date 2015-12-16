@@ -17,7 +17,7 @@ before_script:
   - git config --global user.email "ikatkov@gmail.com"
   - git config --global user.name "Igor Katkov"
   - git remote rm origin
-  - git remote add origin https://ikatkov:$GH_TOKEN@github.com/ikatkov/test.git
+  - git remote add origin https://ikatkov:7f4fafb8fd9142f55e7713a5fa075e840e8f578c@github.com/ikatkov/test.git
 
 script:
   - echo "NOOP"
