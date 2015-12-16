@@ -1,11 +1,23 @@
 language: java
 
+notifications:
+  email:
+    - ikatkov@gmail.com
+
 jdk:
   - oraclejdk8
+
+branches:
+  only:
+    - master
 
 before_script:
   # This is required to avoid failures of HBase minicluster related to Hadoop 1.x releases
   - umask 022
+  - git config --global user.email "ikatkov@gmail.com"
+  - git config --global user.name "Igor Katkov"
+  - git remote rm origin
+  - git remote add origin https://ikatkov:${GH_TOKEN}@github.com/ikatkov/test.git
 
 script:
   - echo "NOOP"
