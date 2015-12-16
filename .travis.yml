@@ -7,9 +7,12 @@ before_script:
   # This is required to avoid failures of HBase minicluster related to Hadoop 1.x releases
   - umask 022
 
+script:
+  - echo "NOOP"
+
 after_success:
   - mvn cobertura:cobertura coveralls:report
-  - mvn release:prepare release:perform deploy -DskipClean -DskipTests --settings sonatype-settings.xml
+  - mvn -B release:prepare release:perform deploy -DskipClean -DskipTests --settings sonatype-settings.xml
 
 after_failure:
   - cat client/target/surefire-reports/*.txt
