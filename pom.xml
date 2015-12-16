@@ -2,10 +2,11 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+
     <groupId>com.katkov.omid</groupId>
     <artifactId>omid-test</artifactId>
     <packaging>pom</packaging>
-    <version>3.0.28</version>
+    <version>3.0.28-SNAPSHOT</version>
     <name>Omid</name>
 
     <properties>
@@ -161,7 +162,7 @@
         <connection>scm:git:git://github.com/ikatkov/test.git</connection>
         <developerConnection>scm:git:git@github.com:ikatkov/test.git</developerConnection>
         <url>http://github.com/ikatkov/test</url>
-        <tag>omid-test-3.0.28</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
