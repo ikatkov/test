@@ -6,7 +6,7 @@
     <groupId>com.katkov.omid</groupId>
     <artifactId>omid-test</artifactId>
     <packaging>pom</packaging>
-    <version>3.0.37</version>
+    <version>3.0.38-SNAPSHOT</version>
     <name>Omid</name>
 
     <properties>
@@ -172,7 +172,7 @@
         <connection>scm:git:git://github.com/ikatkov/test.git</connection>
         <developerConnection>scm:git:https://${GH_TOKEN}@github.com/ikatkov/test.git</developerConnection>
         <url>https://github.com/ikatkov/test</url>
-        <tag>omid-test-3.0.37</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
