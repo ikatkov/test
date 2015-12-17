@@ -20,6 +20,7 @@ before_script:
   - git remote add origin https://${GH_TOKEN}:@github.com/ikatkov/test.git
   - git checkout master
   - git remote -v
+  #
 
 after_script:
   - echo `git push git@github.com:ikatkov/test.git master:master`
