@@ -6,7 +6,7 @@
     <groupId>com.katkov.omid</groupId>
     <artifactId>omid-test</artifactId>
     <packaging>pom</packaging>
-    <version>3.0.39-SNAPSHOT</version>
+    <version>3.0.39.0-SNAPSHOT</version>
     <name>Omid</name>
 
     <properties>
