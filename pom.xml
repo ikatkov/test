@@ -158,7 +158,7 @@
 
     <scm>
         <connection>scm:git:git://github.com/ikatkov/test.git</connection>
-        <developerConnection>scm:git:https://${GH_TOKEN}@github.com:ikatkov/test.git</developerConnection>
+        <developerConnection>scm:git:https://${GH_TOKEN}@github.com/ikatkov/test.git</developerConnection>
         <url>https://github.com/ikatkov/test</url>
         <tag>HEAD</tag>
     </scm>
