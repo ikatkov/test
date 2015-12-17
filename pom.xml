@@ -162,6 +162,7 @@
         <connection>scm:git:git://github.com/ikatkov/test.git</connection>
         <developerConnection>scm:git:git@github.com:ikatkov/test.git</developerConnection>
         <url>https://github.com/ikatkov/test</url>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
@@ -188,13 +189,13 @@
             </properties>
             <build>
                 <plugins>
-                    <!--<plugin>-->
-                        <!--<groupId>org.apache.maven.plugins</groupId>-->
-                        <!--<artifactId>maven-clean-plugin</artifactId>-->
-                        <!--<configuration>-->
-                            <!--<skip>true</skip>-->
-                        <!--</configuration>-->
-                    <!--</plugin>-->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
 
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
