@@ -3,6 +3,7 @@ language: java
 notifications:
   email:
     - omid-ci@yahoo-inc.com
+    - katkovi@yahoo-inc.com
 
 jdk:
   - oraclejdk8
