@@ -14,17 +14,7 @@ branches:
 before_script:
   # This is required to avoid failures of HBase minicluster related to Hadoop 1.x releases
   - umask 022
-  - git config --global user.email "ikatkov@gmail.com"
-  - git config --global user.name "Igor Katkov"
-  - git remote rm origin
-  - git remote add origin https://${GH_TOKEN}:@github.com/ikatkov/test.git
   - git checkout master
-  - git remote -v
-  - echo -e "Host github.com\n\tHostName github.com\n\tUser git\n\tIdentityFile ~/.ssh/id_rsa\n" >> ~/.ssh/config
-
-
-after_script:
-  - echo `git push git@github.com:ikatkov/test.git master:master`
 
 script:
   - echo "NOOP"
