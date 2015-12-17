@@ -21,6 +21,9 @@ before_script:
   - git checkout master
   - git symbolic-ref HEAD
 
+after_script:
+  - echo `git push git@github.com:ikatkov/test.git master:master`
+
 script:
   - echo "NOOP"
 
