@@ -19,6 +19,8 @@
         <maven-assembly-plugin.version>2.4.1</maven-assembly-plugin.version>
         <maven-release-plugin.version>2.3.2</maven-release-plugin.version>
         <maven-clean-plugin.version>2.5</maven-clean-plugin.version>
+        <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
+        <maven-source-plugin.version>2.4</maven-source-plugin.version>
 
         <buildtype>test</buildtype>
         <sourceEncoding>UTF-8</sourceEncoding>
@@ -88,6 +90,8 @@
                     <version>${maven-release-plugin.version}</version>
                     <configuration>
                         <scmCommentPrefix>[ci skip]</scmCommentPrefix>
+                        <useReleaseProfile>false</useReleaseProfile>
+                        <releaseProfiles>deploy_profile</releaseProfiles>
                     </configuration>
                 </plugin>
 
@@ -122,6 +126,15 @@
                     <groupId>org.eluder.coveralls</groupId>
                     <artifactId>coveralls-maven-plugin</artifactId>
                     <version>${coveralls.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven-javadoc-plugin.version}</version>
                 </plugin>
 
             </plugins>
@@ -163,15 +176,12 @@
     </scm>
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
         <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>bintray</id>
+            <url>https://api.bintray.com/maven/ikatkov/maven/test</url>
         </repository>
     </distributionManagement>
+
 
     <profiles>
         <profile>
@@ -222,6 +232,30 @@
                             <skip>true</skip>
                         </configuration>
                     </plugin>
+
+                    <plugin>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
                 </plugins>
             </build>
         </profile>
