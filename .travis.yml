@@ -17,10 +17,9 @@ before_script:
   - git config --global user.email "ikatkov@gmail.com"
   - git config --global user.name "Igor Katkov"
   - git remote rm origin
-  - git remote add origin https://ikatkov:${GH_TOKEN}@github.com/ikatkov/test.git
+  - git remote add origin https://${GH_TOKEN}:@github.com/ikatkov/test.git
   - git checkout master
-  - git symbolic-ref HEAD
-#...
+
 after_script:
   - echo `git push git@github.com:ikatkov/test.git master:master`
 
