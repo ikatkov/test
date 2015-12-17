@@ -178,7 +178,7 @@
     <distributionManagement>
         <repository>
             <id>bintray</id>
-            <url>https://api.bintray.com/maven/ikatkov/maven/test</url>
+            <url>https://api.bintray.com/maven/ikatkov/maven/test;publish=1</url>
         </repository>
     </distributionManagement>
 
