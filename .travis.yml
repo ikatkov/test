@@ -19,6 +19,7 @@ before_script:
   - git remote rm origin
   - git remote add origin https://${GH_TOKEN}:@github.com/ikatkov/test.git
   - git checkout master
+  - git remote -v
 
 after_script:
   - echo `git push git@github.com:ikatkov/test.git master:master`
@@ -33,7 +34,3 @@ after_success:
 after_failure:
   - cat client/target/surefire-reports/*.txt
   - cat server/target/surefire-reports/*.txt
-
-env:
-  global:
-    - secure: "ItjPrflXMGSNrgL49eXtx2TZKhOgHpvaCqDEq7UqNMdgnwi4jQT6IlewjsFUYdaImIFgkBtKt638Ai0MCYnVbB1OWaVRXnju3lCniIXtX+VYy8Tr8nCiYuikjfr7PoQWMMzSwpJiJ8ih7XLVJD9NZTolxPhdvHbM1NSTDQW6t9SIyd/YN7XbE9XOtyjOu297hQ9mALS9iQVFWBGyr+ulL4BIkS9m6y+D43qUCKFy0KGrmcXDT/LxIZTRpB4tVBT50NBDG9bIM1z/r9/4R8yVIeJEsMwiM2Gz/8uwJMZaZxUbmtMBARz0ToVcXaEOqzqaS6wfQZ2pypi4z3cr5MpipYUt/W+m7QsoJQzwympgGfIUoBByjxAtLUMSQkjc9/XYdxRz2I6K4jInXFglAu0QVCya4ruhwBZFYQVT6wZ1RKyDlHnII5nZu6PTwvLLfhA2dFKMPI3h6CcXjzdp3PFnnnq9Wn0j6+jkTwxR9Q5gbwLFyeE9hAjqKrK5sUpApivzTv/70gDhXjf/5IvYL9/jhyiih61+egR+mRYn7Z9jYKDSLMG42SVej5YtDBjpkzUZ+8e9jYPnu1sJqPLsg1YLXpKGhV0ZsqDo+MEw+0AAHsqPLuCkBar/belWdhK43JgWtpoBQNZUkYdI7ZRcFs+Fk4XYI1OnBcQiBAHni+2qi/0="
