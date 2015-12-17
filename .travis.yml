@@ -2,7 +2,10 @@ language: java
 
 notifications:
   email:
-    - omid-ci@yahoo-inc.com
+    recepients:
+      - omid-ci@yahoo-inc.com
+  on_success: always
+  on_failure: always
 
 jdk:
   - oraclejdk8
